@@ -19,7 +19,7 @@ const getById = async (req, res) => {
   try {
     const airplane = await Airplane.findById(id);
     if (!airplane) {
-      res.status(404).json({ message: "modelo de avião não encontrado" });
+      res.status(404).json({ message: "Modelo de avião não encontrado" });
       return;
     }
     return res.send({ airplane });
@@ -29,50 +29,50 @@ const getById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const { nome, identidade, genero, imagem } = req.body;
+  const { nome, velocidademax, preco, imagem } = req.body;
 
-  if (!nome || !identidade || !genero || !imagem) {
+  if (!nome || !velocidademax || !preco || !imagem) {
     res.status(400).send({
       message: "Você não enviou todos os dados necessários para o cadastro",
     });
     return;
   }
 
-  const novoPersonagem = await new Personagem({
+  const novoAirplane = await new Airplane({
     nome,
-    identidade,
-    genero,
+    velocidademax,
+    preco,
     imagem,
   });
 
   try {
-    await novoPersonagem.save();
+    await novoAirplane.save();
     return res
       .status(201)
-      .send({ message: "Personagem criado com sucesso", novoPersonagem });
+      .send({ message: "Novo modelo de avião criado com sucesso", novoAirplane });
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
 };
 
 const update = async (req, res) => {
-  const { nome, identidade, genero, imagem } = req.body;
+  const { nome, velocidademax, preco, imagem } = req.body;
 
-  if (!nome || !identidade || !genero || !imagem) {
+  if (!nome || !velocidademax || !preco || !imagem) {
     res.status(400).send({
       message: "Você não enviou todos os dados necessários para o cadastro",
     });
     return;
   }
 
-  res.personagem.nome = nome;
-  res.personagem.identidade = identidade;
-  res.personagem.genero = genero;
-  res.personagem.imagem = imagem;
+  res.airplane.nome = nome;
+  res.airplane.velocidademax = velocidademax;
+  res.airplane.preco = preco;
+  res.airplane.imagem = imagem;
 
   try {
-    await res.personagem.save();
-    res.send({ message: "Personagem alterado com sucesso!" });
+    await res.airplane.save();
+    res.send({ message: "Modelo de avião alterado com sucesso!" });
   } catch (err) {
     res.status(500).send({ error: err.message });
   }
@@ -80,8 +80,8 @@ const update = async (req, res) => {
 
 const del = async (req, res) => {
   try {
-    await res.personagem.remove();
-    return res.send({ message: "Personagem removido com sucesso!" });
+    await res.airplane.remove();
+    return res.send({ message: "Modelo de avião removido com sucesso!" });
   } catch (err) {
     return res.status(500).send({ erro: err.message });
   }
@@ -94,31 +94,31 @@ const filterByName = async (req, res) => {
     return;
   }
   try {
-    const personagens = await Personagem.find({ nome: { $regex: `${nome}` } });
-    return res.send({ personagens });
+    const airplanes = await Airplane.find({ nome: { $regex: `${nome}` } });
+    return res.send({ airplanes });
   } catch (err) {
     return res.status(500).send({ error: err.message });
   }
 };
 
 const filterAll = async (req, res) => {
-  let { nome, identidade, genero } = req.query;
+  let { nome, velocidademax, preco } = req.query;
 
   !nome ? (nome = "") : (nome = nome);
-  !identidade ? (identidade = "") : (identidade = identidade);
-  !genero ? (genero = "") : (genero = genero);
+  !velocidademax ? (velocidademax = "") : (velocidademax = velocidademax);
+  !preco ? (preco = "") : (preco = preco);
 
   try {
-    const personagens = await Personagem.find({
+    const airplanes = await Airplane.find({
       nome: { $regex: `${nome}`, $options: 'i' },
-      identidade: { $regex: `${identidade}`, $options: 'i'},
-      genero: { $regex: `${genero}`, $options: 'i'},
+      velocidademax: { $regex: `${velocidademax}`, $options: 'i'},
+      preco: { $regex: `${preco}`, $options: 'i'},
     });
 
-    if (personagens.length === 0)
-      return res.status(404).send({ erro: "Personagem não encontrado" });
+    if (airplanes.length === 0)
+      return res.status(404).send({ erro: "Modelo de avião não encontrado" });
 
-    return res.send({ personagens });
+    return res.send({ airplanes });
   } catch (err) {
     return res.status(500).send({ error: err.message });
   }

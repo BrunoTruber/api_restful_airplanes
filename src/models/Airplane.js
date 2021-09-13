@@ -6,11 +6,11 @@ const airplaneSchema = new mongoose.Schema({
         require: true
     },
     velocidademax:{
-        type: Number,
+        type: String,
         require: true
     },
     preco:{
-        type: Number,
+        type: String,
         require: true
     },
     imagem:{
