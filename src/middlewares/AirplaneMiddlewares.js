@@ -1,23 +1,23 @@
 const mongoose = require("mongoose");
 const Airplane = require("../models/Airplane");
-const cors = require("cors");
+//const cors = require("cors");
 const express = require("express");
 require("express-async-errors");
 
 
-const app = express();
+// const app = express();
 
-app.all("/*", (req, res, next) => {
-	res.header(
-	"Access-Control-Allow-Origin", "*");
+// app.all("/*", (req, res, next) => {
+// 	res.header(
+// 	"Access-Control-Allow-Origin", "*");
 
-	res.header("Access-Control-Allow-Methods", "*");
+// 	res.header("Access-Control-Allow-Methods", "*");
 
-	res.header(
-		"Access-Control-Allow-Headers",
-		"Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
-		next();
-	});
+// 	res.header(
+// 		"Access-Control-Allow-Headers",
+// 		"Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
+// 		next();
+// 	});
 
 const validaID = async (req, res, next) => {
   const { id } = req.params;
