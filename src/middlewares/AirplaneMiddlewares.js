@@ -1,16 +1,27 @@
 const mongoose = require("mongoose");
 const Airplane = require("../models/Airplane");
-//const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-//   // liberar o CORS em todas as requisições
-// app.use(cors());
-//   //ativar todos os pre-flights
-// app.options('*', cors());
+	//CORS
+
+	app.all("/*", (req, res, next) => {
+		res.header(
+			"Access-Control-Allow-Origin", "*");
+
+		res.header("Access-Control-Allow-Methods", "*");
+
+		res.header(
+			"Access-Control-Allow-Headers",
+			"Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization", "*"
+		);
+		next();
+	});
 
 
 const validaID = async (req, res, next) => {
