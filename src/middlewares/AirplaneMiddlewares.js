@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Airplane = require("../models/Airplane");
-//const cors = require("cors");
+const cors = require("cors");
 const express = require("express");
 require("express-async-errors");
 
 
-// const app = express();
+const app = express();
+app.use(cors());
+//ativar todos os pre-flights
+app.options('*', cors());
 
 // app.all("/*", (req, res, next) => {
 // 	res.header(
