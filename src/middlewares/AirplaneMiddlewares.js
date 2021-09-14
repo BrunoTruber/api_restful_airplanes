@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const Airplane = require("../models/Airplane");
-const cors = require("cors");
+//const cors = require("cors");
 const express = require("express");
 
 
 const app = express();
 app.use(express.json());
 
-  // liberar o CORS em todas as requisições
-app.use(cors());
-  //ativar todos os pre-flights
-app.options('*', cors());
+//   // liberar o CORS em todas as requisições
+// app.use(cors());
+//   //ativar todos os pre-flights
+// app.options('*', cors());
 
 
 const validaID = async (req, res, next) => {
