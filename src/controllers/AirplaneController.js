@@ -29,9 +29,9 @@ const getById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const { nome, velocidademax, preco, imagem } = req.body;
+  const { nome, velocidademax, preco, imagemUrl } = req.body;
 
-  if (!nome || !velocidademax || !preco || !imagem) {
+  if (!nome || !velocidademax || !preco || !imagemUrl) {
     res.status(400).send({
       message: "Você não enviou todos os dados necessários para o cadastro",
     });
@@ -42,7 +42,7 @@ const create = async (req, res) => {
     nome,
     velocidademax,
     preco,
-    imagem,
+    imagemUrl,
   });
 
   try {
@@ -56,9 +56,9 @@ const create = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const { nome, velocidademax, preco, imagem } = req.body;
+  const { nome, velocidademax, preco, imagemUrl } = req.body;
 
-  if (!nome || !velocidademax || !preco || !imagem) {
+  if (!nome || !velocidademax || !preco || !imagemUrl) {
     res.status(400).send({
       message: "Você não enviou todos os dados necessários para o cadastro",
     });
@@ -68,7 +68,7 @@ const update = async (req, res) => {
   res.airplane.nome = nome;
   res.airplane.velocidademax = velocidademax;
   res.airplane.preco = preco;
-  res.airplane.imagem = imagem;
+  res.airplane.imagemUrl = imagemUrl;
 
   try {
     await res.airplane.save();
