@@ -1,12 +1,5 @@
 const routes = require("express").Router();
-//const cors = require("cors");
-const express = require("express");
-//const app = express();
 
-// // liberar o CORS em todas as requisições
-// app.use(cors());
-// //ativar todos os pre-flights
-// app.options('*', cors());
 
 const AirplaneController = require("../controllers/AirplaneController");
 const AirplaneMiddleware = require("../middlewares/AirplaneMiddlewares");

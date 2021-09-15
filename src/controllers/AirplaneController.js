@@ -94,7 +94,7 @@ const filterByName = async (req, res) => {
     return;
   }
   try {
-    const airplanes = await Airplane.find({ nome: { $regex: `${nome}` } });
+    const airplanes = await Airplane.find({ nome: { $regex: `${nome}`, $options: 'i'} });
     return res.send({ airplanes });
   } catch (err) {
     return res.status(500).send({ error: err.message });
