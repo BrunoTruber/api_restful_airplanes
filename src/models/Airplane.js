@@ -13,7 +13,7 @@ const airplaneSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    imagem:{
+    imagemUrl:{
         type: String,
         require: true
     }

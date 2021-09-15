@@ -3,7 +3,7 @@
 		"nome": "Airbus A320",
 		"velocidademax": "875 km/h",
 		"preco": "US$ 101.000.000,00",
-		"imagem": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Jetstar_Airbus_A320_in_flight_%286768081241%29_crop.jpg"
+		"imagemUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Jetstar_Airbus_A320_in_flight_%286768081241%29_crop.jpg"
 	}
 
 ]
