@@ -1,5 +1,5 @@
 # API RESTful - Airplanes
-<img src="https://viagemeturismo.abril.com.br/wp-content/uploads/2017/08/istock-155439315.jpg?quality=70&strip=info&resize=680,453" />
+<img src="https://viagemeturismo.abril.com.br/wp-content/uploads/2017/08/istock-155439315.jpg?quality=70&strip=info&resize=680,453" /> 
 
 > API criada para estudar conceitos de back-end, utilizando a linguagem de programação JavaScript e o banco de dados MongoDB. Nessa API eu crio um CRUD completo com aviões das principais fabricantes.
 
