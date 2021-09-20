@@ -55,6 +55,7 @@ const create = async (req, res) => {
   }
 };
 
+
 const update = async (req, res) => {
   const { nome, velocidademax, preco, imagemUrl } = req.body;
 
@@ -77,6 +78,7 @@ const update = async (req, res) => {
     res.status(500).send({ error: err.message });
   }
 };
+
 
 const del = async (req, res) => {
   try {
